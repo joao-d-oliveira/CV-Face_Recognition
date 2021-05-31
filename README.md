@@ -7,7 +7,7 @@ Final project from 1st Section
 ## Submission Files
 * :white_check_mark: models.py: 
 * :white_check_mark: Notebooks 2: Defining and Training a Convolutional Neural Network (CNN) to Predict Facial Keypoints 
-* :heavy_exclamation_mark: Notebooks 3: Facial Keypoint Detection Using Haar Cascades and your Trained CNN
+* :white_check_mark: Notebooks 3: Facial Keypoint Detection Using Haar Cascades and your Trained CNN
 
 ### models.py
 
@@ -44,15 +44,14 @@ Final project from 1st Section
 ### Notebook 3: Facial Keypoint Detection
 **Criteria:**
 
-:heavy_exclamation_mark: **Detect faces in a given image**
+:white_check_mark: **Detect faces in a given image**
 * Use a Haar cascade face detector to detect faces in a given image.
 
-:heavy_exclamation_mark: **Transform each detected face into an input Tensor**
+:white_check_mark: **Transform each detected face into an input Tensor**
 * You should transform any face into a normalized, square, grayscale image and then a Tensor for your model to take in as input (similar to what the `data_transform` did in Notebook 2).
 
-:heavy_exclamation_mark: **Predict and display the keypoints on each face**
+:white_check_mark: **Predict and display the keypoints on each face**
 * After face detection with a Haar cascade and face pre-processing, apply your trained model to each detected face, and display the predicted keypoints for each face in the image.
-
 
 
 ## Recommendations
