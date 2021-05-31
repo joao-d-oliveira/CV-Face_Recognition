@@ -1,6 +1,7 @@
 # About
-Project from Udacity.
-Final project from 1st Section
+Project from Udacity. <br>
+Final project from 1st Section 
+Original [GitHub project](https://github.com/udacity/P1_Facial_Keypoints)
 
 # Instructions
 
