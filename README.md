@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # About
 Project from Udacity.
 Final project from 1st Section
@@ -75,3 +76,6 @@ Final project from 1st Section
 
 # Todo
 * Evaluate the advantage of substituting the old haar files from original [git](https://github.com/opencv/opencv/tree/master/data/haarcascades)
+=======
+# project_face_keypoints
+>>>>>>> b08f878c1019e6f2383411bbc07c9bf27367cef4

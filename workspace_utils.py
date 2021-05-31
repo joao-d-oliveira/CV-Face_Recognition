@@ -52,6 +52,7 @@ def keep_awake(iterable, delay=DELAY, interval=INTERVAL):
         # do iteration with lots of work here
     """
     with active_session(delay, interval): yield from iterable
+<<<<<<< HEAD
         
         
 def checkFreeGPU():
@@ -90,3 +91,5 @@ def printmultigraphs():
       g.set_title(f"{idx} epoch")
 
     plt.show(g)
+=======
+>>>>>>> b08f878c1019e6f2383411bbc07c9bf27367cef4

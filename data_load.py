@@ -35,8 +35,14 @@ class FacialKeypointsDataset(Dataset):
         # if image has an alpha color channel, get rid of it
         if(image.shape[2] == 4):
             image = image[:,:,0:3]
+<<<<<<< HEAD
 
         key_pts = self.key_pts_frame.iloc[idx,1:].values.astype('float').reshape(-1, 2)
+=======
+        
+        key_pts = self.key_pts_frame.iloc[idx, 1:].as_matrix()
+        key_pts = key_pts.astype('float').reshape(-1, 2)
+>>>>>>> b08f878c1019e6f2383411bbc07c9bf27367cef4
         sample = {'image': image, 'keypoints': key_pts}
 
         if self.transform:
