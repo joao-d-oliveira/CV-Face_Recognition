@@ -44,7 +44,7 @@ Original [GitHub project](https://github.com/udacity/P1_Facial_Keypoints)
 
 | Criteria       		|     Meets Specifications	        			            | 
 |:---------------------|:---------------------------------------------------------:| 
-| :white_check_mark:  All questions about model, training, and loss choices are answered.  | After training, all 3 questions in notebook 2 about model architecture, choice of loss function, and choice of batch_size and epoch parameters are answered. |
+| :white_check_mark: :heavy_exclamation_mark:  All questions about model, training, and loss choices are answered.  | After training, all 3 questions in notebook 2 about model architecture, choice of loss function, and choice of batch_size :heavy_exclamation_mark:  and epoch parameters are answered. |
 
 
 #### Visualize one or more learned feature maps
