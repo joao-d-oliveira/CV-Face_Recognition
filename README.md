@@ -103,7 +103,7 @@ Approach:
 
 ## Bonus
 * :white_check_mark: Initialize the weights of your CNN by sampling a normal distribution or by performing Xavier initialization so that a particular input signal does not get too big or too small as the network trains.
-* :heavy_exclamation_mark: In Notebook 4, create face filters that add sunglasses, mustaches, or any .png of your choice to a given face in the correct location.
+* :white_check_mark: In Notebook 4, create face filters that add sunglasses, mustaches, or any .png of your choice to a given face in the correct location.
 * :heavy_exclamation_mark: Use the keypoints around a person's mouth to estimate the curvature of their mouth and create a smile recognition algorithm .
 * :heavy_exclamation_mark: Use OpenCV's k-means clustering algorithm to extract the most common facial poses (left, middle, or right-facing, etc.).
 * :heavy_exclamation_mark: Use the locations of keypoints on two faces to swap those faces.
