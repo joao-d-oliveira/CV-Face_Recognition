@@ -51,9 +51,7 @@ def keep_awake(iterable, delay=DELAY, interval=INTERVAL):
     for i in keep_awake(range(5)):
         # do iteration with lots of work here
     """
-    with active_session(delay, interval): yield from iterable
-<<<<<<< HEAD
-        
+    with active_session(delay, interval): yield from iterable        
         
 def checkFreeGPU():
     # memory footprint support libraries/code
@@ -91,5 +89,4 @@ def printmultigraphs():
       g.set_title(f"{idx} epoch")
 
     plt.show(g)
-=======
->>>>>>> b08f878c1019e6f2383411bbc07c9bf27367cef4
+    
