@@ -130,12 +130,8 @@ class Net_V1_2(nn.Module):
               ## it's suggested that you make this last layer output 136 values, 2 for each of the 68 keypoint (x, y) pairs
             ('output', nn.Linear(1000, 136)),
            ]))
-<<<<<<< HEAD
-        if initiation:
-=======
 
-            if initiation:
->>>>>>> 56df81caf7cda0ef09a8cfa8c6fca6450362a2af
+        if initiation:
             for layer in chain(self.features.children(), self.regressor.children()):
                 if isinstance(layer, nn.Conv2d) or isinstance(layer, nn.Linear):
                     I.xavier_uniform_(layer.weight)
