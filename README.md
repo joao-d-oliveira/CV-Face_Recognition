@@ -3,6 +3,24 @@ Project from Udacity. <br>
 Final project from 1st Section 
 Original [GitHub project](https://github.com/udacity/P1_Facial_Keypoints)
 
+
+# About
+
+Approach:
+1. Define parameters to tweek:
+  * **Optimizers**: Adam, SGD
+  * **Loss Functions**: MSE, MAE-Smooth, MAE
+  * **Momentum/Bestas for Optimizers**: Adam-(0.9, 0.999), (0.85, 0.999), (0.85, 0.95) ; SGD-(0.8, 0.9), 0.9, 0.8, 0.85 
+  * **Learning Rates**: 0.0001, 0.001, 0.01
+    * **Models**: [Model_v1.0](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_0.txt), [Model_v1.1](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_1.txt), [Model_v1.2](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_2.txt), [Model_v1.3](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_3.txt)
+2. Run different combination (252 runs) with 20 epochs storing **test MSE, MAE, MAE-Smooth** from runs in [Neptune.ai](https://app.neptune.ai/joao.d.oliveira/Computer-Vision/)
+3. Analyse and make statistics based on Runs, using [2.1 NeptuneAnalysis.ipynb](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/2.1%20NeptuneAnalysis.ipynb)
+    * :heavy_exclamation_mark: Produces also 2 images: [] and []
+4. Based on that selected best 2 models:
+5. Run for 1,000 epochs with EarlyStopping (20 epochs)
+6. Tested as well **Xavier Activation** and **Batch sizes**
+7. Did the rest of the requirements as requested
+
 # Instructions
 
 ## Submission Files
