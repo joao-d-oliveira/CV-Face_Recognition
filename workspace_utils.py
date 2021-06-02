@@ -56,10 +56,10 @@ def keep_awake(iterable, delay=DELAY, interval=INTERVAL):
 # to use only in Collab
 def checkFreeGPU():
     # memory footprint support libraries/code
-    !ln -sf /opt/bin/nvidia-smi /usr/bin/nvidia-smi
-    !pip install gputil
-    !pip install psutil
-    !pip install humanize
+#    !ln -sf /opt/bin/nvidia-smi /usr/bin/nvidia-smi
+##    !pip install gputil
+ #   !pip install psutil
+ #   !pip install humanize
 
     import psutil
     import humanize
