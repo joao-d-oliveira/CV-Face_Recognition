@@ -27,6 +27,7 @@ Approach:
 * :white_check_mark: models.py: 
 * :white_check_mark: Notebooks 2: Defining and Training a Convolutional Neural Network (CNN) to Predict Facial Keypoints 
 * :white_check_mark: Notebooks 3: Facial Keypoint Detection Using Haar Cascades and your Trained CNN
+* :white_check_mark: :boom: Notebooks 4: Extra Features - Fun with Keypoints.ipynb **(Bonus)**
 
 ## Project Rubric
 
@@ -101,7 +102,7 @@ Approach:
 * Your home folder (including subfolders) must be less than 25 megabytes to submit as a project.
 
 
-## Bonus
+## Bonus :boom::boom::boom:
 * :white_check_mark: Initialize the weights of your CNN by sampling a normal distribution or by performing Xavier initialization so that a particular input signal does not get too big or too small as the network trains.
 * :white_check_mark: In Notebook 4, create face filters that add sunglasses, mustaches, or any .png of your choice to a given face in the correct location.
 * :white_check_mark: Use the keypoints around a person's mouth to estimate the curvature of their mouth and create a smile recognition algorithm .
