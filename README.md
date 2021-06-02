@@ -106,7 +106,7 @@ Approach:
 * :white_check_mark: In Notebook 4, create face filters that add sunglasses, mustaches, or any .png of your choice to a given face in the correct location.
 * :heavy_exclamation_mark: Use the keypoints around a person's mouth to estimate the curvature of their mouth and create a smile recognition algorithm .
 * :heavy_exclamation_mark: Use OpenCV's k-means clustering algorithm to extract the most common facial poses (left, middle, or right-facing, etc.).
-* :heavy_exclamation_mark: Use the locations of keypoints on two faces to swap those faces.
+* :white_check_mark: Use the locations of keypoints on two faces to swap those faces.
 * :heavy_exclamation_mark: Add a rotation transform to our list of transformations and use it to do data augmentation.
 * :heavy_exclamation_mark: Evaluate the advantage of substituting the old haar files from original [git](https://github.com/opencv/opencv/tree/master/data/haarcascades)
 * https://github.com/jrosebr1/imutils/blob/master/imutils/face_utils/helpers.py
