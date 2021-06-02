@@ -108,4 +108,3 @@ Approach:
 * :white_check_mark: Use OpenCV's k-means clustering algorithm to extract the most common facial poses (left, middle, or right-facing, etc.).
 * :white_check_mark: Use the locations of keypoints on two faces to swap those faces.
 * :heavy_exclamation_mark: Add a rotation transform to our list of transformations and use it to do data augmentation.
-* https://github.com/jrosebr1/imutils/blob/master/imutils/face_utils/helpers.py
