@@ -1,0 +1,317 @@
+<h1>
+<a id="user-content-about" class="anchor" href="#about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About</h1>
+<p>Project from Udacity. <br>
+Final project from 1st Section
+Original <a href="https://github.com/udacity/P1_Facial_Keypoints">GitHub project</a></p>
+<h1>
+<a id="user-content-approach-taken" class="anchor" href="#approach-taken" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Approach taken</h1>
+<h2>
+<a id="user-content-1st-part-define-model-analyse-parameters-like-loss-functions-optimizers--file" class="anchor" href="#1st-part-define-model-analyse-parameters-like-loss-functions-optimizers--file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1st Part (define model, analyse parameters like loss-functions, optimizers, ...) <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/2.%20Define%20the%20Network%20Architecture.html">file</a>:</h2>
+<ol>
+<li>Define parameters to tweek:</li>
+</ol>
+<ul>
+<li>
+<strong>Optimizers</strong>: Adam, SGD</li>
+<li>
+<strong>Loss Functions</strong>: MSE, MAE-Smooth, MAE</li>
+<li>
+<strong>Momentum/Bestas for Optimizers</strong>: Adam-(0.9, 0.999), (0.85, 0.999), (0.85, 0.95) ; SGD-(0.8, 0.9), 0.9, 0.8, 0.85</li>
+<li>
+<strong>Learning Rates</strong>: 0.0001, 0.001, 0.01</li>
+<li>
+<strong>Models</strong>: <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_0.txt">Model_v1.0</a>, <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_1.txt">Model_v1.1</a>, <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_2.txt">Model_v1.2</a>, <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_3.txt">Model_v1.3</a>
+</li>
+</ul>
+<ol start="2">
+<li>Run different combination (252 runs) with 20 epochs storing <strong>test MSE, MAE, MAE-Smooth</strong> from runs in <a href="https://app.neptune.ai/joao.d.oliveira/Computer-Vision/" rel="nofollow">Neptune.ai</a>
+</li>
+<li>Analyse and make statistics based on Runs, using <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/2.1%20NeptuneAnalysis.html">2.1 NeptuneAnalysis.ipynb</a>
+<ul>
+<li>Produces also 2 images: <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/allcombinations.png">Combinations from different parameters</a> and <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/all_divisions.png">3 measures from all divisions</a>
+</li>
+</ul>
+</li>
+<li>Based on that selected best 2 models:</li>
+<li>Run for 1,000 epochs with EarlyStopping (20 epochs)</li>
+<li>Tested as well <strong>Xavier Activation</strong> and <strong>Batch sizes</strong>
+</li>
+<li>Did the rest of the requirements as requested</li>
+</ol>
+<h2>
+<a id="user-content-2nd-part-file" class="anchor" href="#2nd-part-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2nd Part <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/3.%20Facial%20Keypoint%20Detection%2C%20Complete%20Pipeline.html">file</a>
+</h2>
+<ol>
+<li>Load one of the best models saved (not included due to size limitations +30 MB)</li>
+<li>Perform all necessary transformations and plot</li>
+</ol>
+<h2>
+<a id="user-content-3rd-part-bonus-file" class="anchor" href="#3rd-part-bonus-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3rd Part <strong>Bonus</strong> <a href="https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/4.%20Fun%20with%20Keypoints.html">file</a>
+</h2>
+<ol>
+<li>Improve filter in picture:</li>
+</ol>
+<ul>
+<li>Take the filter and resize it</li>
+<li>Padd the filter to match image size</li>
+<li>Rotate the filter according to the angle of the head</li>
+<li>Combine filter with Image</li>
+</ul>
+<ol start="2">
+<li>Smile Detection:</li>
+</ol>
+<ul>
+<li>Take mouth points</li>
+<li>Draw a curved line</li>
+<li>Fix the rotation of curved line</li>
+<li>Check the upper and lower point of the mouth according to its edges</li>
+<li>Based on that determine if it's Big-Smile, Smile, Neutral, Sad</li>
+<li>
+<strong>Next steps:</strong> Improve on smile detection taking more key points from face</li>
+</ul>
+<ol start="3">
+<li>Swap Faces:</li>
+</ol>
+<ul>
+<li>Draw "green screen" ellipse on the surface of face (taking into account angle)</li>
+<li>Draw a filter with the shape of the ellipse capturing the "green screen" from ellipse</li>
+<li>Put pixels from image 2 in image 1 elipse</li>
+<li>Put pixels from image 1 in image 2 elipse</li>
+<li>
+<strong>Next steps:</strong> Improve on face detection taking more key points from face, and try to smoothen</li>
+</ul>
+<ol start="4">
+<li>K-Means Face position:</li>
+</ol>
+<ul>
+<li>With the example in <a href="https://learnopencv.com/head-pose-estimation-using-opencv-and-dlib/" rel="nofollow">tutorial</a> check the vector of observer and face</li>
+<li>with that check where the observer is relative to the face (x and y)</li>
+<li>Uppon that and with a defined threshold, decide if person is looking: Left-Central-Right and Upwards-Central-Downwards</li>
+</ul>
+<ol start="5">
+<li>Rotation Function:</li>
+</ol>
+<ul>
+<li>Similar to the ones already defined, created a Class for roration</li>
+<li>Taking into account also keypoints rotation</li>
+<li>Plot 2 examples using the class</li>
+</ul>
+<h1>
+<a id="user-content-instructions" class="anchor" href="#instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instructions</h1>
+<h2>
+<a id="user-content-submission-files" class="anchor" href="#submission-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Submission Files</h2>
+<ul>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> models.py:</li>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Notebooks 2: Defining and Training a Convolutional Neural Network (CNN) to Predict Facial Keypoints</li>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Notebooks 3: Facial Keypoint Detection Using Haar Cascades and your Trained CNN</li>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> <g-emoji class="g-emoji" alias="boom" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a5.png">💥</g-emoji> Notebooks 4: Extra Features - Fun with Keypoints.ipynb <strong>(Bonus)</strong>
+</li>
+</ul>
+<h2>
+<a id="user-content-project-rubric-link_original" class="anchor" href="#project-rubric-link_original" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Rubric <a href="https://review.udacity.com/#!/rubrics/1426/view" rel="nofollow">link_original</a>
+</h2>
+<h3>
+<a id="user-content-modelspy" class="anchor" href="#modelspy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>models.py</code>
+</h3>
+<h4>
+<a id="user-content-specify-the-cnn-architecture" class="anchor" href="#specify-the-cnn-architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Specify the CNN architecture</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Define a CNN in <code>models.py</code>.</td>
+<td align="center">Define a convolutional neural network with at least one convolutional layer, i.e. self.conv1 = nn.Conv2d(1, 32, 5). The network should take in a grayscale, square image.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="user-content-notebook-2" class="anchor" href="#notebook-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notebook 2</h3>
+<h4>
+<a id="user-content-define-the-data-transform-for-training-and-test-data" class="anchor" href="#define-the-data-transform-for-training-and-test-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define the data transform for training and test data</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Define a <code>data_transform</code> and apply it whenever you instantiate a DataLoader.</td>
+<td align="center">The composed transform should include: rescaling/cropping, normalization, and turning input images into torch Tensors. The transform should turn any input image into a normalized, square, grayscale image and then a Tensor for your model to take it as input.</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-define-the-loss-and-optimization-functions" class="anchor" href="#define-the-loss-and-optimization-functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define the loss and optimization functions</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Select a loss function and optimizer for training the model.</td>
+<td align="center">The loss and optimization functions should be appropriate for keypoint detection, which is a regression problem.</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-train-the-cnn" class="anchor" href="#train-the-cnn" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Train the CNN</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji>  Train your model.</td>
+<td align="center">Train your CNN after defining its loss and optimization functions. You are encouraged, but not required, to visualize the loss over time/epochs by printing it out occasionally and/or plotting the loss over time. Save your best trained model.</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-answer-questions-about-model-architecture" class="anchor" href="#answer-questions-about-model-architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Answer questions about model architecture</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji>  All questions about model, training, and loss choices are answered.</td>
+<td align="center">After training, all 3 questions in notebook 2 about model architecture, choice of loss function, and choice of batch_size and epoch parameters are answered.</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-visualize-one-or-more-learned-feature-maps" class="anchor" href="#visualize-one-or-more-learned-feature-maps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Visualize one or more learned feature maps</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji>  Apply a learned convolutional kernel to an image and see its effects.</td>
+<td align="center">Your CNN "learns" (updates the weights in its convolutional layers) to recognize features and this step requires that you extract at least one convolutional filter from the trained model, apply it to an image, and see what effect this filter has on the image.</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-answer-question-about-feature-visualization" class="anchor" href="#answer-question-about-feature-visualization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Answer question about feature visualization</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji>  After visualizing a feature map, answer: what do you think it detects?</td>
+<td align="center">This answer should be informed by how the filtered image (from the step above) looks.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="user-content-notebook-3" class="anchor" href="#notebook-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notebook 3</h3>
+<h4>
+<a id="user-content-detect-faces-in-a-given-image" class="anchor" href="#detect-faces-in-a-given-image" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Detect faces in a given image</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji>  Use a haar cascade face detector to detect faces in a given image.</td>
+<td align="center">The submission successfully employs OpenCV's face detection to detect all faces in a selected image.</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-transform-each-detected-face-into-an-input-tensor" class="anchor" href="#transform-each-detected-face-into-an-input-tensor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Transform each detected face into an input Tensor</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji>  Turn each detected image of a face into an appropriate input Tensor.</td>
+<td align="center">You should transform any face into a normalized, square, grayscale image and then a Tensor for your model to take in as input (similar to what the <code>data_transform</code> did in Notebook 2).</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-predict-and-display-the-keypoints" class="anchor" href="#predict-and-display-the-keypoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Predict and display the keypoints</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Criteria</th>
+<th align="center">Meets Specifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji>  Predict and display the keypoints on each detected face.</td>
+<td align="center">After face detection with a Haar cascade and face pre-processing, apply your trained model to each detected face, and display the predicted keypoints on each face in the image.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="user-content-recommendations" class="anchor" href="#recommendations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Recommendations</h2>
+<ul>
+<li>Your home folder (including subfolders) must be less than 2GB (/home/workspace)</li>
+<li>Your home folder (including subfolders) must be less than 25 megabytes to submit as a project.</li>
+</ul>
+<h2>
+<a id="user-content-bonus-boomboomboom" class="anchor" href="#bonus-boomboomboom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bonus <g-emoji class="g-emoji" alias="boom" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a5.png">💥</g-emoji><g-emoji class="g-emoji" alias="boom" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a5.png">💥</g-emoji><g-emoji class="g-emoji" alias="boom" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a5.png">💥</g-emoji>
+</h2>
+<ul>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Initialize the weights of your CNN by sampling a normal distribution or by performing Xavier initialization so that a particular input signal does not get too big or too small as the network trains.</li>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> In Notebook 4, create face filters that add sunglasses, mustaches, or any .png of your choice to a given face in the correct location.</li>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Use the keypoints around a person's mouth to estimate the curvature of their mouth and create a smile recognition algorithm .</li>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Use OpenCV's k-means clustering algorithm to extract the most common facial poses (left, middle, or right-facing, etc.).</li>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Use the locations of keypoints on two faces to swap those faces.</li>
+<li>
+<g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji> Add a rotation transform to our list of transformations and use it to do data augmentation.</li>
+</ul>
+
