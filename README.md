@@ -4,22 +4,56 @@ Final project from 1st Section
 Original [GitHub project](https://github.com/udacity/P1_Facial_Keypoints)
 
 
-# About
+# Approach taken
 
-Approach:
+## 1st Part (define model, analyse parameters like loss-functions, optimizers, ...) [file](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/2.%20Define%20the%20Network%20Architecture.html):
 1. Define parameters to tweek:
   * **Optimizers**: Adam, SGD
   * **Loss Functions**: MSE, MAE-Smooth, MAE
   * **Momentum/Bestas for Optimizers**: Adam-(0.9, 0.999), (0.85, 0.999), (0.85, 0.95) ; SGD-(0.8, 0.9), 0.9, 0.8, 0.85 
   * **Learning Rates**: 0.0001, 0.001, 0.01
-    * **Models**: [Model_v1.0](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_0.txt), [Model_v1.1](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_1.txt), [Model_v1.2](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_2.txt), [Model_v1.3](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_3.txt)
+  * **Models**: [Model_v1.0](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_0.txt), [Model_v1.1](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_1.txt), [Model_v1.2](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_2.txt), [Model_v1.3](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/model_summary_1_3.txt)
 2. Run different combination (252 runs) with 20 epochs storing **test MSE, MAE, MAE-Smooth** from runs in [Neptune.ai](https://app.neptune.ai/joao.d.oliveira/Computer-Vision/)
-3. Analyse and make statistics based on Runs, using [2.1 NeptuneAnalysis.ipynb](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/2.1%20NeptuneAnalysis.ipynb)
+3. Analyse and make statistics based on Runs, using [2.1 NeptuneAnalysis.ipynb](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/2.1%20NeptuneAnalysis.html)
     * Produces also 2 images: [Combinations from different parameters](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/allcombinations.png) and [3 measures from all divisions](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/aux/all_divisions.png)
 4. Based on that selected best 2 models:
 5. Run for 1,000 epochs with EarlyStopping (20 epochs)
 6. Tested as well **Xavier Activation** and **Batch sizes**
 7. Did the rest of the requirements as requested
+
+## 2nd Part [file](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/3.%20Facial%20Keypoint%20Detection%2C%20Complete%20Pipeline.html)
+
+1. Load one of the best models saved (not included due to size limitations +30 MB)
+2. Perform all necessary transformations and plot 
+
+## 3rd Part **Bonus** [file](https://github.com/joao-d-oliveira/project_face_keypoints/blob/main/4.%20Fun%20with%20Keypoints.html)
+1. Improve filter in picture:
+  * Take the filter and resize it
+  * Padd the filter to match image size
+  * Rotate the filter according to the angle of the head
+  * Combine filter with Image
+2. Smile Detection:
+  * Take mouth points
+  * Draw a curved line
+  * Fix the rotation of curved line
+  * Check the upper and lower point of the mouth according to its edges
+  * Based on that determine if it's Big-Smile, Smile, Neutral, Sad
+  * **Next steps:** Improve on smile detection taking more key points from face
+3. Swap Faces:
+  * Draw "green screen" ellipse on the surface of face (taking into account angle)
+  * Draw a filter with the shape of the ellipse capturing the "green screen" from ellipse
+  * Put pixels from image 2 in image 1 elipse
+  * Put pixels from image 1 in image 2 elipse
+  * **Next steps:** Improve on face detection taking more key points from face, and try to smoothen
+4. K-Means Face position:
+  * With the example in [tutorial](https://learnopencv.com/head-pose-estimation-using-opencv-and-dlib/) check the vector of observer and face
+  * with that check where the observer is relative to the face (x and y)
+  * Uppon that and with a defined threshold, decide if person is looking: Left-Central-Right and Upwards-Central-Downwards
+5. Rotation Function:
+  * Similar to the ones already defined, created a Class for roration
+  * Taking into account also keypoints rotation
+  * Plot 2 examples using the class
+
 
 # Instructions
 
